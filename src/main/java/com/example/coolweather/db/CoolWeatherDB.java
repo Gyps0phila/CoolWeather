@@ -28,7 +28,7 @@ public class CoolWeatherDB {
         db = dbHelper.getWritableDatabase();
     }
 
-    public synchronized CoolWeatherDB getInstance(Context context) {
+    public synchronized static CoolWeatherDB getInstance(Context context) {
         //保证单例模式，全局公用则要static
         if (coolWeatherDB == null) {
             coolWeatherDB = new CoolWeatherDB(context);
@@ -40,7 +40,7 @@ public class CoolWeatherDB {
      * 将province实例保存在数据库
      */
 
-    public void saveProvince(Province province) {
+    public void addProvince(Province province) {
         if (province != null) {
             ContentValues values = new ContentValues();
             values.put("province_name", province.getProvinceName());
